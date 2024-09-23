@@ -1,8 +1,12 @@
 import express, { urlencoded } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-
+import dotenv from 'dotenv';
+import dbConnect from './database/db.js';
+dotenv.config({});
 const app = express();
+
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -21,8 +25,8 @@ app.get('/', (req, res) => {
     });
 });
 
-const PORT = 8000;
-app.listen(PORT, (err, res) => {
+app.listen(port, (err, res) => {
     if (err) throw err;
-    console.log(`Server running on port ${PORT}`);
+    dbConnect();
+    console.log(`Server running on port ${port}`);
 })
