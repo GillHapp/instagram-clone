@@ -15,3 +15,5 @@ const isAuthenticated = async (req, res) => {
         return res.status(500).json({ message: "Server error", success: false });
     }
 }
+
+export default isAuthenticated;
